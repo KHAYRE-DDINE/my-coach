@@ -42,7 +42,11 @@ function Details() {
       });
     }
   };
-  foundItem();
+
+  useEffect(() => {
+    foundItem();
+  }, [id]);
+
   return (
     <div className="details App head">
       <div className="top">
