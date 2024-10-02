@@ -10,12 +10,14 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import footerImage from "../../images/footer-img.png";
 import characters from "../../images/characters.jpeg";
 import ReactPaginate from "react-paginate";
+import { useNavigate } from "react-router-dom";
 
 function ListItemsPage() {
   const [listItem, setListItem] = useState();
   const [newListItems, setNewListItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [characterPerPage, setCharacterPerPage] = useState(9);
+  const navigate = useNavigate();
   // const numberOfPagination = Math.ceil(listItem.length / characterPerPage)
 
   useEffect(() => {
@@ -73,7 +75,6 @@ function ListItemsPage() {
           <img src={footerImage} alt="rick et morty" />
         </div>
         <div className="middle">
-          {" "}
           <img src={characters} alt="characters" />
         </div>
 
@@ -137,7 +138,7 @@ function ListItemsPage() {
               <p className="gender"> gender : {item.gender}</p>
               <span className="status"> status : {item.status}</span> <br />
             </div>
-            <button>
+            <button onClick={() => navigate(`item/${index + 1}`)}>
               <span>details</span>
             </button>
           </div>
