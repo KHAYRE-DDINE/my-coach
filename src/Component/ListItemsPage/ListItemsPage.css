@@ -1,0 +1,474 @@
+.App {}
+
+/************************Header**********************************/
+.head {
+    text-align: center;
+}
+
+.head .top {
+    height: 152px;
+    padding: 32px 350px 32px 350px;
+}
+
+.head .top img {
+    width: 268px;
+    height: 64px;
+}
+
+.head .middle img {
+    width: 1216px;
+    height: 600px;
+    border-radius: 12px;
+}
+
+.head .box {
+    width: 598px;
+    height: 200px;
+    position: relative;
+    top: -115px;
+    left: 140px;
+    padding: 40px;
+    border-radius: 12px;
+    background: #FFFFFF;
+    border: 1px solid #E8E8EA;
+    box-shadow: 0px 12px 24px -6px #181A2A1F;
+}
+
+.head .box p {
+    font-family: Work Sans;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 40px;
+    text-align: left;
+    color: #181A2A;
+}
+
+
+@media (max-width: 640px) {
+    .head .top {
+        height: 152px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .head .middle img {
+        width: 90%;
+        height: 300px;
+    }
+
+    .head .box {
+        width: 90%;
+        height: 122px;
+        top: 12px;
+        left: 17px;
+        padding: 15px 12px;
+    }
+
+    .head .box p {
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 640px) {
+    .head .middle img {
+        width: 80%;
+        height: 500px;
+    }
+
+    .head .box {
+        width: 469px;
+        height: 150px;
+        padding: 11px 20px;
+    }
+
+    .head .box p {
+        font-size: 26px;
+    }
+}
+
+@media (min-width: 768px) {
+    .head .middle img {
+        width: 80%;
+        height: 600px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .head .middle img {
+        height: 600px;
+    }
+}
+
+@media (min-width: 1280px) {}
+
+@media (min-width: 1536px) {}
+
+/************************Controls**********************************/
+.App .controls {
+    padding-top: 30px;
+    text-align: center;
+}
+
+.App .controls .search-input {
+    width: 450px;
+    height: 60px;
+    padding: 8px 16px;
+    border-radius: 32px;
+    box-shadow: 0px 4px 12px 0px #0D0A2C26;
+    outline: none;
+    border: none;
+    position: relative;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.App .controls .search-input input {
+    width: 374px;
+    height: 27px;
+    padding: 0px 10px;
+    outline: none;
+    border: none;
+
+}
+
+.App .controls .search-input svg {
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+}
+
+.App .controls .search-input input::placeholder {
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 27px;
+    text-align: left;
+    color: #ABB7C2;
+}
+
+.App .controls .filter {
+    height: 289px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: 50px auto 0;
+    max-width: 1237px;
+}
+
+.App .controls .filter div {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.App .controls .filter select {
+    width: 280px;
+    height: 60px;
+    border-radius: 8px;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.5px;
+    text-align: left;
+    color: #666666;
+    border: none;
+    box-shadow: 0px 4px 14px 0px #0000001A;
+    padding: 0 12px;
+    text-transform: capitalize;
+    outline: none;
+    appearance: none;
+}
+
+.App .controls .filter svg {
+    position: absolute;
+    right: 15px;
+    top: 66%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+
+.App .controls .filter select option {}
+
+.App .controls .filter label {
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19.5px;
+    text-align: left;
+    color: #333333;
+    text-transform: capitalize;
+    margin: 0 0 10px 0;
+}
+
+@media (max-width: 640px) {
+    .App .controls .search-input {
+        width: 90%;
+    }
+
+    .App .controls .filter {
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .App .controls .filter select {
+        width: 300px;
+    }
+}
+
+@media (min-width: 640px) {
+    .App .controls .filter {
+        width: 80%;
+    }
+}
+
+@media (min-width: 768px) and (max-width:1024px) {
+    .App .controls .search-input {
+        width: 380px;
+        height: 48px;
+    }
+
+
+
+    .App .controls .filter select {
+        width: 225px;
+    }
+}
+
+@media (min-width: 1024px) {}
+
+@media (min-width: 1280px) {}
+
+@media (min-width: 1536px) {}
+
+/************************List Items**********************************/
+.title {
+    width: 603px;
+    margin: 50px auto;
+}
+
+.title h1 {
+    font-family: Work Sans;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: center;
+    line-height: 1;
+}
+
+.App .listItems {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 30px;
+}
+
+.App .listItems .item {
+    width: 392px;
+    height: 606px;
+    padding: 16px;
+    gap: 16px;
+    border-radius: 12px;
+    border: 1px solid #E8E8EA;
+}
+
+.App .listItems .item .image {
+    width: 360px;
+    height: 358px;
+    border-radius: 6px;
+}
+
+.App .listItems .item .image img {
+    width: 100%;
+    height: 100%;
+}
+
+.App .listItems .item .species {
+    width: 69px;
+    height: 28px;
+    padding: 4px 10px 4px 10px;
+    margin: 10px 0;
+    border-radius: 6px;
+    color: #4B6BFB;
+    background: #4B6BFB0D;
+    font-family: Work Sans;
+}
+
+.App .listItems .item .info {
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    text-align: left;
+    color: #181A2A;
+    text-transform: capitalize;
+    margin: 10px 0;
+}
+
+.App .listItems .item .info .name {}
+
+.App .listItems .item .info .gender {}
+
+.App .listItems .item .info .status {}
+
+.App .listItems .item button {
+    width: 88px;
+    height: 36px;
+    border: none;
+    text-transform: capitalize;
+    border-radius: 6px;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.App .listItems .item button span {
+    font-family: Work Sans;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;
+    color: #017034;
+
+}
+
+@media (max-width: 640px) {
+    .title {
+        width: 100%;
+    }
+}
+
+@media (min-width: 640px) {}
+
+@media (min-width: 768px) and (max-width:1024px) {
+    .App .listItems .item {
+        width: 45%;
+        height: 527px;
+    }
+
+    .App .listItems .item .image {
+        width: 100%;
+        height: 284px;
+    }
+}
+
+@media (min-width: 1024px) {}
+
+@media (min-width: 1280px) {}
+
+@media (min-width: 1536px) {}
+
+/***********************Pagination***************************************/
+ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    list-style: none;
+    margin: 30px 0;
+}
+
+ul li {
+    width: 41.6px;
+    height: 41.6px;
+    padding: 6.5px 4.8px 6.1px 5.2px;
+    border-radius: 5.2px;
+    border: 1.3px solid #01703480;
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+ul li a {
+    font-family: Inter;
+    font-size: 18.2px;
+    font-weight: 700;
+    line-height: 26px;
+    text-align: center;
+    color: #212B36;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ul li a svg {
+    font-size: 30px;
+}
+
+ul li.selected {
+    border: 1.3px solid #017034;
+
+}
+
+ul li.selected a {
+    color: #017034;
+}
+
+ul li.disabled {
+    background: #007C2A80;
+    opacity: 0.5;
+}
+
+ul li.disabled a {
+    background: #01703400;
+    color: #017034;
+}
+
+ul li.next a {
+    color: #017034;
+}
+
+@media (max-width: 640px) {}
+
+@media (min-width: 640px) {}
+
+@media (min-width: 768px) {}
+
+@media (min-width: 1024px) {}
+
+@media (min-width: 1280px) {}
+
+@media (min-width: 1536px) {}
+
+/**********************Footer**********************************/
+.footer {
+    width: 100%;
+    height: 176px;
+    padding: 64px 352px 0px 352px;
+    background: #F6F6F7;
+    border-top: 1px solid #E8E8EA;
+    text-align: center;
+}
+
+.footer .image img {
+    width: 268px;
+    height: 64px;
+}
+
+@media (max-width: 640px) {
+    .footer {
+        height: 115px;
+        padding: 0 0 0px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (min-width: 640px) {}
+
+@media (min-width: 768px) {}
+
+@media (min-width: 1024px) {}
+
+@media (min-width: 1280px) {}
+
+@media (min-width: 1536px) {}

@@ -1,0 +1,87 @@
+.details {}
+
+.details .top {}
+
+.details .top img {}
+
+.details .all-info {}
+
+.details .all-info h1 {
+    font-family: Work Sans;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: center;
+    line-height: 1;
+    width: 740px;
+    margin: auto;
+}
+
+.details .all-info .boxe {
+    display: flex;
+    width: 80%;
+    height: 413px;
+    padding: 20.61px;
+    gap: 20.61px;
+    border-radius: 15.46px;
+    border: 1.29px solid #E8E8EA;
+    margin: 50px auto;
+    max-width: 1017px;
+    position: relative;
+}
+
+.details .all-info .boxe .image {
+    width: 463.78px;
+    height: 100;
+    border-radius: 7.73px;
+}
+
+.details .all-info .boxe .image img {
+    width: 100%;
+    height: 100%;
+}
+
+.details .all-info .boxe .info {
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: left;
+    padding: 0 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 403px;
+    height: 379px;
+    top: 452px;
+    left: 1025px;
+}
+
+.details .all-info .boxe .info img {
+    position: absolute;
+    width: 100px;
+    top: 26px;
+    right: 19%;
+}
+
+.details .all-info .boxe .info ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 0.4;
+    gap: 0;
+    margin: 0;
+    list-style: disc;
+}
+
+.details .all-info .boxe .info ul li {
+    margin-left: 33px;
+    width: max-content;
+    border: none;
+    cursor: auto;
+    display: list-item;
+}
+
+.details .all-info .boxe .info  p b {
+    color: #017034;
+}
