@@ -82,6 +82,29 @@
     display: list-item;
 }
 
-.details .all-info .boxe .info  p b {
+.details .all-info .boxe .info p b {
     color: #017034;
+}
+
+
+@media (max-width:768px) {
+    .details .all-info .boxe .info img {
+        right: 50%;
+        transform: translateX(50%);
+    }
+
+    .details .all-info h1 {
+        width: 90%;
+        font-size: 30px;
+    }
+
+    .details .all-info .boxe {
+        flex-direction: column;
+        padding-top: 71px;
+    }
+
+    .details .all-info .boxe .info {
+        width: 100%;
+        padding: 0;
+    }
 }

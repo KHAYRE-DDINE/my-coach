@@ -13,6 +13,7 @@ function Details() {
     gender: "",
     status: "",
     species: "",
+    image: "",
   });
 
   const { id } = useParams();
@@ -26,24 +27,25 @@ function Details() {
     getItems();
   }, [id]);
 
-  const foundItem = () => {
-    let foundIt = listItem?.filter(
-      (character) => character.id === parseInt(id)
-    );
-    console.log(foundIt[0]);
-
-    if (listItem && id) {
-      setCharacterInfo({
-        ...foundIt[0],
-        name: foundIt[0].name,
-        gender: foundIt[0].gender,
-        status: foundIt[0].status,
-        species: foundIt[0].species,
-      });
-    }
-  };
-
   useEffect(() => {
+    const foundItem = () => {
+      let foundIt = listItem?.filter(
+        (character) => character.id === parseInt(id)
+      );
+      console.log(foundIt);
+      console.log(listItem);
+
+      if (listItem && id) {
+        setCharacterInfo({
+          ...foundIt[0],
+          name: foundIt[0].name,
+          gender: foundIt[0].gender,
+          status: foundIt[0].status,
+          species: foundIt[0].species,
+          image: foundIt[0].image,
+        });
+      }
+    };
     foundItem();
   }, [id]);
 
@@ -59,7 +61,7 @@ function Details() {
         </h1>
         <div className="boxe">
           <div className="image">
-            <img src={characters} alt="characters" />
+            <img src={characterInfo?.image} alt="characters" />
           </div>
           <div className="info">
             <img src={footerImage} alt="characters" />
