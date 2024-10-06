@@ -5,18 +5,28 @@ import axios from "axios";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
-import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
-import { MdKeyboardArrowRight } from "react-icons/md";
+import { MdOutlineKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import footerImage from "../../images/footer-img.png";
 import characters from "../../images/characters.jpeg";
 import ReactPaginate from "react-paginate";
 import { useNavigate } from "react-router-dom";
 
-function ListItemsPage() {
-  const [listItem, setListItem] = useState();
-  const [newListItems, setNewListItems] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [characterPerPage, setCharacterPerPage] = useState(9);
+interface Character {
+  id: number,
+  name: string,
+  gender: string,
+  status: string,
+  species: string,
+  image: string
+}
+
+
+
+function ListItemsPage(): JSX.Element {
+  const [listItem, setListItem] = useState<Character[] | undefined>();
+  const [newListItems, setNewListItems] = useState<Character[]>([]);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [characterPerPage, setCharacterPerPage] = useState<number>(9);
   const navigate = useNavigate();
   // const numberOfPagination = Math.ceil(listItem.length / characterPerPage)
 
@@ -34,34 +44,34 @@ function ListItemsPage() {
     getItems();
   }, []);
 
-  const searchItems = (e) => {
-    let newList = listItem.filter((l) =>
+  const searchItems = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let newList = listItem?.filter((l) =>
       l.name.toLowerCase().includes(e.target.value)
     );
-    setNewListItems(newList);
+    setNewListItems(newList || []);
   };
 
-  const FilterByGender = (e) => {
-    let newList = listItem.filter(
+  const FilterByGender = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    let newList = listItem?.filter(
       (l) => l.gender.toLowerCase() === e.target.value.toLowerCase()
     );
-    setNewListItems(newList);
+    setNewListItems(newList || []);
   };
 
-  const FilterBySpecies = (e) => {
-    let newList = listItem.filter(
+  const FilterBySpecies = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    let newList = listItem?.filter(
       (l) => l.species.toLowerCase() === e.target.value.toLowerCase()
     );
-    setNewListItems(newList);
+    setNewListItems(newList || []);
   };
 
-  const FilterByStatus = (e) => {
-    let newList = listItem.filter(
+  const FilterByStatus = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    let newList = listItem?.filter(
       (l) => l.status.toLowerCase() === e.target.value.toLowerCase()
     );
-    setNewListItems(newList);
+    setNewListItems(newList || []);
   };
-  const handlePaginationClick = (e) => {
+  const handlePaginationClick = (e: { selected: number }) => {
     setCurrentPage(e.selected + 1);
   };
   const lastIndex = currentPage * characterPerPage;
