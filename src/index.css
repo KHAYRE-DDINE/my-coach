@@ -10,3 +10,8 @@
     --webkit-box-sizing: border-box;
     --o-box-sizing: border-box;
 }
+
+.App {
+    max-width: 1400px;
+    margin: auto;
+}

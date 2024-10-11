@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./Details.css";
 import "../ListItemsPage/ListItemsPage.css";
 import footerImage from "../../images/footer-img.png";
-import characters from "../../images/characters.jpeg";
-import { useParams } from "react-router-dom";
+// import characters from "../../images/characters.jpeg";
+// import { useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import axios from "axios";
 
 interface Character {
-  id: number;
-  name: string;
-  gender: string;
-  status: string;
-  species: string;
-  image: string;
+  id: number,
+  name: string,
+  gender: string,
+  status: string,
+  species: string,
+  image: string
 }
 
 interface CharacterInfo {
@@ -32,7 +33,7 @@ function Details(): JSX.Element {
     species: "",
     image: "",
   });
-
+  // const location = useLocation()
   const { id } = useParams<{ id: string }>(); // Type the param object
 
   useEffect(() => {
@@ -42,21 +43,25 @@ function Details(): JSX.Element {
         .then((character) => setListItem(character.data.results));
     };
     getItems();
-  }, [id]);
+    console.log("above")
+
+  }, []);
+
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const foundItem = () => {
+    if (!listItem || !id) return; // Early return if data not loaded or id missing
+    let foundIt = listItem.filter((character) => character.id === parseInt(id));
+
+    if (foundIt.length > 0) {
+      setCharacterInfo({ ...foundIt[0] }); // Use spread operator for all properties
+    }
+  };
 
   useEffect(() => {
-    const foundItem = () => {
-      if (!listItem || !id) return; // Early return if data not loaded or id missing
-      let foundIt = listItem.filter((character) => character.id === parseInt(id));
-      console.log(foundIt);
-      console.log(listItem);
-
-      if (foundIt.length > 0) {
-        setCharacterInfo({ ...foundIt[0] }); // Use spread operator for all properties
-      }
-    };
     foundItem();
-  }, [id]);
+    console.log("details")
+  }, [])
 
   return (
     <div className="details App head">

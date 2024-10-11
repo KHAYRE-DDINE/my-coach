@@ -1,13 +1,14 @@
-.App {}
-
 /************************Header**********************************/
 .head {
     text-align: center;
 }
 
 .head .top {
-    height: 152px;
-    padding: 32px 350px 32px 350px;
+    height: 115px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .head .top img {
@@ -67,7 +68,7 @@
     }
 
     .head .box p {
-        font-size: 20px;
+        font-size: 18px;
     }
 }
 
@@ -97,11 +98,15 @@
 
 @media (min-width: 1024px) {
     .head .middle img {
-        height: 600px;
+        height: 440px;
     }
 }
 
-@media (min-width: 1280px) {}
+@media (min-width: 1280px) {
+    .head .middle img {
+        height: 600px;
+    }
+}
 
 @media (min-width: 1536px) {}
 
@@ -224,6 +229,7 @@
 @media (min-width: 640px) {
     .App .controls .filter {
         width: 80%;
+        gap: 15px;
     }
 }
 
@@ -233,10 +239,12 @@
         height: 48px;
     }
 
-
+    .App .controls .filter div {
+        flex: 1;
+    }
 
     .App .controls .filter select {
-        width: 225px;
+        width: 100%;
     }
 }
 
@@ -272,16 +280,17 @@
 
 .App .listItems .item {
     width: 392px;
-    height: 606px;
+    max-height: 606px;
     padding: 16px;
     gap: 16px;
     border-radius: 12px;
+    overflow: hidden;
     border: 1px solid #E8E8EA;
 }
 
 .App .listItems .item .image {
-    width: 360px;
-    height: 358px;
+    width: 100%;
+    /* height: 358px; */
     border-radius: 6px;
 }
 
@@ -358,9 +367,27 @@
     }
 }
 
-@media (min-width: 1024px) {}
+@media (min-width: 1024px) {
+    .App .listItems .item {
+        width: 330px;
+        height: 500px;
+    }
 
-@media (min-width: 1280px) {}
+    .App .listItems .item .image {
+        height: 270px;
+    }
+
+    .App .listItems .item .info {
+        font-size: 16px;
+        margin: 5px 0;
+    }
+}
+
+@media (min-width: 1285px) {
+    .App .listItems .item {
+        width: 392px;
+    }
+}
 
 @media (min-width: 1536px) {}
 
@@ -441,11 +468,13 @@ ul li.next a {
 /**********************Footer**********************************/
 .footer {
     width: 100%;
-    height: 176px;
-    padding: 64px 352px 0px 352px;
+    height: 130px;
+    display: flex;
+    padding: 0;
     background: #F6F6F7;
     border-top: 1px solid #E8E8EA;
-    text-align: center;
+    align-items: center;
+    justify-content: center;
 }
 
 .footer .image img {

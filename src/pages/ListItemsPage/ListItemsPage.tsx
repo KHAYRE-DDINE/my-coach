@@ -1,15 +1,14 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ListItemsPage.css";
-import axios from "axios";
 import { IoIosArrowDown } from "react-icons/io";
-import { IoIosArrowUp } from "react-icons/io";
+// import { IoIosArrowUp } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 import { MdOutlineKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import footerImage from "../../images/footer-img.png";
 import characters from "../../images/characters.jpeg";
 import ReactPaginate from "react-paginate";
-import { useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
+import axios from "axios";
 
 interface Character {
   id: number,
@@ -20,29 +19,26 @@ interface Character {
   image: string
 }
 
-
-
 function ListItemsPage(): JSX.Element {
   const [listItem, setListItem] = useState<Character[] | undefined>();
   const [newListItems, setNewListItems] = useState<Character[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [characterPerPage, setCharacterPerPage] = useState<number>(9);
+  const [characterPerPage] = useState<number>(9);
   const navigate = useNavigate();
-  // const numberOfPagination = Math.ceil(listItem.length / characterPerPage)
+  const numberOfPagination = Math.ceil(newListItems.length / characterPerPage)
 
   useEffect(() => {
     const getItems = async () => {
       await axios
         .get("https://rickandmortyapi.com/api/character")
-        .then(
-          (character) => (
-            setListItem(character.data.results),
-            setNewListItems(character.data.results)
-          )
-        );
+        .then((character) => (setListItem(character.data.results),
+          setNewListItems(character.data.results)));
     };
     getItems();
+
+    console.log("list")
   }, []);
+
 
   const searchItems = (e: React.ChangeEvent<HTMLInputElement>) => {
     let newList = listItem?.filter((l) =>
@@ -71,12 +67,15 @@ function ListItemsPage(): JSX.Element {
     );
     setNewListItems(newList || []);
   };
+
   const handlePaginationClick = (e: { selected: number }) => {
     setCurrentPage(e.selected + 1);
   };
+
   const lastIndex = currentPage * characterPerPage;
   const firstIndex = lastIndex - characterPerPage;
   const itemsPerPage = newListItems.slice(firstIndex, lastIndex);
+
 
   return (
     <div className="App">
@@ -160,7 +159,7 @@ function ListItemsPage(): JSX.Element {
         nextLabel={<MdKeyboardArrowRight />}
         previousLabel={<MdOutlineKeyboardArrowLeft />}
         pageRangeDisplayed={2}
-        pageCount={3}
+        pageCount={numberOfPagination}
         renderOnZeroPageCount={null}
         onPageChange={(e) => handlePaginationClick(e)}
       />

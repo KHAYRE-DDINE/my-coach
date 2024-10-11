@@ -1,11 +1,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './App.css';
-import Details from './Component/Details/Details';
-import ListItemsPage from './Component/ListItemsPage/ListItemsPage';
-import { useEffect } from 'react';
+import '../App.css';
+import Details from '../pages/Details/Details';
+import ListItemsPage from '../pages/ListItemsPage/ListItemsPage';
 
 
-function App() {
+function App(): JSX.Element {
+
 
   return (
     <BrowserRouter>
@@ -14,7 +14,6 @@ function App() {
         <Route path="item/:id" element={<Details />} />
       </Routes>
     </BrowserRouter>
-
   );
 }
 
