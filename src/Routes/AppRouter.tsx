@@ -10,8 +10,8 @@ function App(): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<ListItemsPage />} />
-        <Route path="item/:id" element={<Details />} />
+        <Route path='my-coach' element={<ListItemsPage />} />
+        <Route path="my-coach/item/:id" element={<Details />} />
       </Routes>
     </BrowserRouter>
   );

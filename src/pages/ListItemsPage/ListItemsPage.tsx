@@ -7,7 +7,7 @@ import { MdOutlineKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md
 import footerImage from "../../images/footer-img.png";
 import characters from "../../images/characters.jpeg";
 import ReactPaginate from "react-paginate";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 interface Character {
@@ -147,7 +147,7 @@ function ListItemsPage(): JSX.Element {
               <p className="gender"> gender : {item.gender}</p>
               <span className="status"> status : {item.status}</span> <br />
             </div>
-            <button onClick={() => navigate(`item/${index + 1}`)}>
+            <button onClick={() => navigate(`my-coach/item/${index + 1}`)}>
               <span>details</span>
             </button>
           </div>
