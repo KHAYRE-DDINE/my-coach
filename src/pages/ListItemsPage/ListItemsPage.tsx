@@ -11,61 +11,52 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 interface Character {
-  id: number,
-  name: string,
-  gender: string,
-  status: string,
-  species: string,
-  image: string
+  id: number;
+  name: string;
+  gender: string;
+  status: string;
+  species: string;
+  image: string;
+
 }
 
 function ListItemsPage(): JSX.Element {
   const [listItem, setListItem] = useState<Character[] | undefined>();
   const [newListItems, setNewListItems] = useState<Character[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [characterPerPage] = useState<number>(9);
+  const [characterPerPage, setCharacterPerPage] = useState<number>(9);
   const navigate = useNavigate();
-  const numberOfPagination = Math.ceil(newListItems.length / characterPerPage)
+  const numberOfPagination = Math.ceil(newListItems.length / characterPerPage);
 
   useEffect(() => {
     const getItems = async () => {
       await axios
         .get("https://rickandmortyapi.com/api/character")
-        .then((character) => (setListItem(character.data.results),
-          setNewListItems(character.data.results)));
+        .then((character) => (setListItem(character.data.results), setNewListItems(character.data.results)));
     };
     getItems();
 
-    console.log("list")
+    console.log("list"); // Add semicolon here
   }, []);
 
-
   const searchItems = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let newList = listItem?.filter((l) =>
-      l.name.toLowerCase().includes(e.target.value)
-    );
-    setNewListItems(newList || []);
+    let newList = listItem?.filter((l) => l.name.toLowerCase().includes(e.target.value));
+    setNewListItems(newList ? newList : []); // Set newList if it exists, otherwise []
   };
 
   const FilterByGender = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    let newList = listItem?.filter(
-      (l) => l.gender.toLowerCase() === e.target.value.toLowerCase()
-    );
-    setNewListItems(newList || []);
+    let newList = listItem?.filter((l) => l.gender.toLowerCase() === e.target.value.toLowerCase());
+    setNewListItems(newList ? newList : []);
   };
 
   const FilterBySpecies = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    let newList = listItem?.filter(
-      (l) => l.species.toLowerCase() === e.target.value.toLowerCase()
-    );
-    setNewListItems(newList || []);
+    let newList = listItem?.filter((l) => l.species.toLowerCase() === e.target.value.toLowerCase());
+    setNewListItems(newList ? newList : []);
   };
 
   const FilterByStatus = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    let newList = listItem?.filter(
-      (l) => l.status.toLowerCase() === e.target.value.toLowerCase()
-    );
-    setNewListItems(newList || []);
+    let newList = listItem?.filter((l) => l.status.toLowerCase() === e.target.value.toLowerCase());
+    setNewListItems(newList ? newList : []);
   };
 
   const handlePaginationClick = (e: { selected: number }) => {
@@ -147,7 +138,7 @@ function ListItemsPage(): JSX.Element {
               <p className="gender"> gender : {item.gender}</p>
               <span className="status"> status : {item.status}</span> <br />
             </div>
-            <button onClick={() => navigate(`my-coach/item/${index + 1}`)}>
+            <button onClick={() => navigate(`item/${index + 1}`)}>
               <span>details</span>
             </button>
           </div>
