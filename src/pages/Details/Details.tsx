@@ -9,11 +9,11 @@ import axios from "axios";
 
 interface Character {
   id: number,
-  name: string,
-  gender: string,
-  status: string,
-  species: string,
-  image: string
+  name: string;
+  gender: string;
+  status: string;
+  species: string;
+  image: string;
 }
 
 interface CharacterInfo {
@@ -25,43 +25,32 @@ interface CharacterInfo {
 }
 
 function Details(): JSX.Element {
-  const [listItem, setListItem] = useState<Character[] | undefined>();
-  const [characterInfo, setCharacterInfo] = useState<CharacterInfo>({
+  const [listItem, setListItem] = useState<Character[] | undefined>({
     name: "",
     gender: "",
     status: "",
     species: "",
     image: "",
   });
-  // const location = useLocation()
+  const [characterInfo, setCharacterInfo] = useState<CharacterInfo>();
   const { id } = useParams<{ id: string }>(); // Type the param object
 
   useEffect(() => {
     const getItems = async () => {
-      await axios
-        .get("https://rickandmortyapi.com/api/character")
-        .then((character) => setListItem(character.data.results));
+      if (id) {
+        await axios
+          .get(`https://rickandmortyapi.com/api/character/${id}`) // Fetch by specific id
+          .then((character) => setListItem(character.data));
+      } else {
+        // Fetch all characters if no id provided (optional)
+        await axios
+          .get("https://rickandmortyapi.com/api/character")
+          .then((character) => setListItem(character.data.results));
+      }
     };
     getItems();
-    console.log("above")
+  }, [id]);
 
-  }, []);
-
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const foundItem = () => {
-    if (!listItem || !id) return; // Early return if data not loaded or id missing
-    let foundIt = listItem.filter((character) => character.id === parseInt(id));
-
-    if (foundIt.length > 0) {
-      setCharacterInfo({ ...foundIt[0] }); // Use spread operator for all properties
-    }
-  };
-
-  useEffect(() => {
-    foundItem();
-    console.log("details")
-  }, [])
 
   return (
     <div className="details App head">
@@ -72,23 +61,23 @@ function Details(): JSX.Element {
         <h1>Discover the Secrets of Rick Sanchez from the Rick and Morty Universe! </h1>
         <div className="boxe">
           <div className="image">
-            <img src={characterInfo.image} alt="characters" />
+            <img src={listItem?.image} alt="characters" />
           </div>
           <div className="info">
             <img src={footerImage} alt="characters" />
             <ul>
-              <li>Status: {characterInfo.status}</li>
-              <li>Species: {characterInfo.species}</li>
-              <li>Gender: {characterInfo.gender} </li>
+              <li>Status: {listItem?.status}</li>
+              <li>Species: {listItem?.species}</li>
+              <li>Gender: {listItem?.gender} </li>
             </ul>
             <p>
-              <b> {characterInfo.name}</b> is a{" "}
+              <b> {listItem?.name}</b> is a{" "}
               <b>
-                {characterInfo.gender} {characterInfo.species}{" "}
+                {listItem?.gender} {listItem?.species}{" "}
               </b>
               who is currently
-              <b> {characterInfo.status}</b>. He remains a core figure in the{" "}
-              <b> {characterInfo.species} </b>
+              <b> {listItem?.status}</b>. He remains a core figure in the{" "}
+              <b> {listItem?.species} </b>
               species.
             </p>
           </div>

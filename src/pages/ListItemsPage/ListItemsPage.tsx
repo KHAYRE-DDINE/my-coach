@@ -35,8 +35,6 @@ function ListItemsPage(): JSX.Element {
         .then((character) => (setListItem(character.data.results), setNewListItems(character.data.results)));
     };
     getItems();
-
-    console.log("list"); // Add semicolon here
   }, []);
 
   const searchItems = (e: React.ChangeEvent<HTMLInputElement>) => {
